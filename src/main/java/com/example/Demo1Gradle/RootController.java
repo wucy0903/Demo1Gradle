@@ -27,4 +27,11 @@ public class RootController {
         LOGGER.info("context = " + context.toString());
         return String.format("answer=%d",calculator1.calculate(a,b));
     }
+    @GetMapping(value = "/calculate2")
+    public String calculate2(@RequestParam(value = "a", required = false, defaultValue = "5") Integer a ,
+                             @RequestParam(value = "b", required = false, defaultValue = "3") Integer b){
+        Calculator calculator1 = context.getBean("backup",Calculator.class);
+        LOGGER.info("context = " + context.toString());
+        return String.format("answer=%d",calculator1.calculate(a,b));
+    }
 }
